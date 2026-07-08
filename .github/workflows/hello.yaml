@@ -8,14 +8,19 @@ on: #[push, pull_request]
     branches: [ main ]
 
   repository_dispatch:
-    #types: [workflow_dispatch]
-    types: [workflow_dispatch]
+    types: ["on-demand-test"]
 jobs:
   hello-job:
     runs-on: ubuntu-latest
     steps:
-      #- name: Checkout repository
-      #  uses: actions/checkout@v2
-
       - name: Run a one-line script
         run: echo "Hello GitHub Actions!"
+      - name: Retrive client payload
+        run: |
+          echo "Client payload: ${{ toJson(github.event.client_payload) }}"
+
+  Second-job:
+    runs-on: windows-latest
+    needs: hello-job
+    steps:    
+      - run: echo "This job is running on ${{runner.os}}"
