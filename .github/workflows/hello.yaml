@@ -2,8 +2,8 @@ name: Hello World
 on: #[push, pull_request]
   push:
     branches: [ main ]
-    paths-ignore:
-      - ".github/workflows/*"
+    #paths-ignore:
+      #- ".github/workflows/*"
   pull_request:
     branches: [ main ]
 
