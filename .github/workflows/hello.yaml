@@ -17,7 +17,7 @@ jobs:
         run: echo "Hello GitHub Actions!"
       - name: Retrive client payload
         run: |
-          echo "Client payload: ${{ toJson(github.event.client_payload) }}"
+          echo "Client payload: ${{ github.event.client_payload.status }}"
 
   Second-job:
     runs-on: windows-latest
