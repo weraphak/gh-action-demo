@@ -1,9 +1,11 @@
 name: Hello World
+env:
+  APP_NAME: "Demo Application"
 on: #[push, pull_request]
   push:
     branches: [ main ]
-    paths-ignore:
-      - ".github/workflows/*"
+    #paths-ignore:
+      #- ".github/workflows/*"
   pull_request:
     branches: [ main ]
 
@@ -12,15 +14,18 @@ on: #[push, pull_request]
     
 jobs:
   echo-vars:
+    env:
+      PACKAGE_PATH: "."
     runs-on: ubuntu-latest
     steps:
       - name: Echo GitHub variable
+        env:
+          APP_VERSION: "1.0.0"
         run: |
           echo "This job trigger by ${{ github.event_name }} event";
-          echo "Repository: ${{ github.repository }}";
-          echo "Branch: ${{ github.ref_name }}"
-
-
+          echo "Repository is ${{ github.repository }}";
+          echo "Branch is ${{ github.ref_name }}";
+          echo "This is a ${{ env.APP_NAME }} version ${{ env.APP_VERSION }} package located at ${{ env.PACKAGE_PATH }}"
   hello-job:
     runs-on: ubuntu-latest
     steps:
