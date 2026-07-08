@@ -8,12 +8,10 @@ jobs:
   hello-job:
     runs-on: ubuntu-latest
     steps:
-      #- name: Checkout repository
-      #  uses: actions/checkout@v2
-
       - name: Run a one-line script
         run: echo "Hello GitHub Actions!"
   Second-job:
     runs-on: windows-latest
+    needs: hello-job
     steps:
       - run: echo "This job is running on ${{runner.os}}"
