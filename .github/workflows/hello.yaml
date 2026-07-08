@@ -2,8 +2,13 @@ name: Hello World
 on: #[push, pull_request]
   push:
     branches: [ main ]
+    paths-ignore:
+      - ".github/workflows/*"
   pull_request:
     branches: [ main ]
+
+  repository_dispatch:
+    types: ["on-demand-test"]
 jobs:
   hello-job:
     runs-on: ubuntu-latest
