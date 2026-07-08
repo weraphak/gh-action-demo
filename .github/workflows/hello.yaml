@@ -13,3 +13,7 @@ jobs:
 
       - name: Run a one-line script
         run: echo "Hello GitHub Actions!"
+  Second-job:
+    runs-on: windows-latest
+    steps:
+      - run: echo "This job is running on ${{runner.os}}"
