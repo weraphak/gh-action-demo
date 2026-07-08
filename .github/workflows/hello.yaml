@@ -9,13 +9,24 @@ on: #[push, pull_request]
 
   repository_dispatch:
     types: ["on-demand-test"]
+    
 jobs:
+  echo-vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo GitHub variable
+        run: |
+          echo "This job trigger by ${{ github.event_name }} event";
+          echo "Repository: ${{ github.repository }}";
+          echo "Branch: ${{ github.ref_name }}"
+
+
   hello-job:
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
         run: echo "Hello GitHub Actions!"
-      - name: Retrive client payload
+      - name: Retrieve client payload
         run: |
           echo "Client payload: ${{ github.event.client_payload.status }}"
 
