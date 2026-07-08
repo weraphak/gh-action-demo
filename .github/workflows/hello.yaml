@@ -21,7 +21,7 @@ jobs:
       - name: Echo GitHub variable
         env:
           APP_VERSION: "1.0.0"
-          RUNNER_CONTEXT: ${{ toJSON(runn) }}
+          RUNNER_CONTEXT: ${{ toJSON(runner) }}
         run: |
           echo "This job trigger by ${{ github.event_name }} event";
           echo "Repository is ${{ github.repository }}";
