@@ -15,12 +15,8 @@ jobs:
     steps:
       - name: Run a one-line script
         run: echo "Hello GitHub Actions!"
-      - name: Retrive client payload
-        run: |
-          echo "Client payload: ${{ github.event.client_payload.status }}"
-
   Second-job:
     runs-on: windows-latest
     needs: hello-job
-    steps:    
+    steps:
       - run: echo "This job is running on ${{runner.os}}"
