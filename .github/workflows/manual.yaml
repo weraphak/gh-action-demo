@@ -30,7 +30,7 @@ jobs:
         id: set-status
         run: |
           echo "Get result from building process"
-          echo "status = success" >> $GITHUB_OUTPUT
+          echo "status=success" >> $GITHUB_OUTPUT
   test:
     needs: build
     runs-on: ubuntu-latest
