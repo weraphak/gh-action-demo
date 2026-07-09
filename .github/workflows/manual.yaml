@@ -17,7 +17,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      buildstatus: ${{ steps.set-status.outputs }}
+      buildstatus: ${{ steps.set-status.outputs.status }}
     steps:
       - name: Checkout source code
         uses: actions/checkout@v7.0.0
